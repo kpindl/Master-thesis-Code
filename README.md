@@ -4,6 +4,8 @@ Source code of Master thesis
 
 Java classes/methods/code snipets implemented by another software developer are labelled accordingly 
 
+
+
 ## ImportHandler
 ### Java classes
 * **MIDAS_Import_Handler_GATK**: Main class for running the data import
@@ -17,11 +19,11 @@ groupSampleCNVs(Sample sample, HashMap<Integer, Integer> orderReferenceTargets, 
 ```
 Method for grouping targets by means of a dynamic programming approach; Approach consists of three steps: Initialization, Recursion, Traceback
 
-
-
 * **MIDAS_DB**: Inits connection to database, executes and caches SQL queries
 * **CNV**: POJO Java class of CNV data
 * **Target**: POJO Java class of target data
+
+
 
 
 ## TargetImport
@@ -32,11 +34,26 @@ startImport()
 ```
 Main method: Inserts the target regions and assigns them to the sequencing enrichment version
 
-
 * **MIDAS_DB**: Inits connection to database, executes and caches SQL queries
 
 
+
+
 ## MIDAS Client
+### Java classes
+
+* **Controller**: Controller classes define the functionalities of the fxml files
+* **Models**: POJO java classes representing data
+* **Wrapper**: Wrapper classes are helper classes for executing GraphQL queries and mutations
+
+
+### Resources
+The resources folder contains the fxml files that define the user interface. The elements of the fxml file are assigned with an identifier name that can be used in the controller classes to give the elements a functionality. 
+
+
+
+
+
 
 ## MIDAS GraphQL Server
 Spring Boot GraphQL server for interaction between software client and database 
