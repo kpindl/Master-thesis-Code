@@ -25,7 +25,7 @@ Method for grouping targets by means of a dynamic programming approach; Approach
 
 
 ## TargetImport
-
+### Java classes
 * **TargetImportMain**: Main class for running the target regions import
 ```
 startImport()
@@ -38,4 +38,27 @@ Main method: Inserts the target regions and assigns them to the sequencing enric
 
 ## MIDAS Client
 
-## Spring Boot GraphQL Server
+## MIDAS GraphQL Server
+Spring Boot GraphQL server for interaction between software client and database 
+
+### Java classes
+
+* **SpringBootGraphQLApplication**: Main class that starts the server 
+
+* **GraphQLProvider**: GraphQL schema is built and provided by this class
+
+* **DataFetcher**: DataFetcher classes are responsible for defining the GraphQL schema (queries and mutations) and implement the functionality of these GraphQL operations (e.g. fetching data from the database) 
+
+* **Repository**: Repository interfaces provide the SQL queries that are send to the database (extend the JPARepository)
+* **Model**: Each model class represents a SQL table or view in the database; class attributes represent the table columns
+
+
+
+
+
+
+
+
+
+
+
