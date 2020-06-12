@@ -6,7 +6,7 @@ Java classes/methods/code snipets implemented by another software developer are 
 
 
 
-## ImportHandler
+## 1. ImportHandler
 ### Java classes
 * **MIDAS_Import_Handler_GATK**: Main class for running the data import
 ```
@@ -26,7 +26,7 @@ Method for grouping targets by means of a dynamic programming approach; Approach
 
 
 
-## TargetImport
+## 2. TargetImport
 ### Java classes
 * **TargetImportMain**: Main class for running the target regions import
 ```
@@ -39,12 +39,13 @@ Main method: Inserts the target regions and assigns them to the sequencing enric
 
 
 
-## MIDAS Client
+## 3. MIDAS Client
 ### Java classes
 
 * **Controller**: Controller classes define the functionalities of the fxml files
 * **Models**: POJO java classes representing data
 * **Wrapper**: Wrapper classes are helper classes for executing GraphQL queries and mutations
+* **AddToVariantViewTask**: Class sends GraphQL query to server to get all CNV data of a certain sample 
 
 
 ### Resources
@@ -55,7 +56,7 @@ The resources folder contains the fxml files that define the user interface. The
 
 
 
-## MIDAS GraphQL Server
+## 4. MIDAS GraphQL Server
 Spring Boot GraphQL server for interaction between software client and database 
 
 ### Java classes
