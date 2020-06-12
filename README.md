@@ -5,7 +5,7 @@ Java classes/methods/code snipets implemented by another software developer are 
 
 ## ImportHandler
 ### Java classes
-* **MIDAS_Import_Handler_GATK**: Main class running the data import
+* **MIDAS_Import_Handler_GATK**: Main class for running the data import
 ```
 processCNVs(MIDAS_DB database)
 ```
@@ -14,7 +14,7 @@ Main function for parsing and processing all raw CNV data files in given directo
 ```
 groupSampleCNVs(Sample sample, HashMap<Integer, Integer> orderReferenceTargets, MIDAS_DB database)
 ```
-Method for grouping targets by means of a dynamic programming approach
+Method for grouping targets by means of a dynamic programming approach; Approach consists of three steps: Initialization, Recursion, Traceback
 
 
 
