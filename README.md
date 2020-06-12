@@ -19,12 +19,22 @@ Method for grouping targets by means of a dynamic programming approach; Approach
 
 
 
-* **MIDAS_DB**: Inits connection to database and executes SQL queries
+* **MIDAS_DB**: Inits connection to database, executes and caches SQL queries
 * **CNV**: POJO Java class of CNV data
 * **Target**: POJO Java class of target data
 
 
 ## TargetImport
+
+* **TargetImportMain**: Main class for running the target regions import
+```
+startImport()
+```
+Main method: Inserts the target regions and assigns them to the sequencing enrichment version
+
+
+* **MIDAS_DB**: Inits connection to database, executes and caches SQL queries
+
 
 ## MIDAS Client
 
