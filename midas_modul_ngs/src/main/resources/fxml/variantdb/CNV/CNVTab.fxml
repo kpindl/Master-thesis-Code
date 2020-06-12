@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ContextMenu?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TreeTableColumn?>
+<?import javafx.scene.control.TreeTableView?>
+
+<TreeTableView fx:id="cnvTreeTableView" prefHeight="900.0" prefWidth="1800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="variantdb.controller.CNVTabController">
+      <columns>
+          <TreeTableColumn fx:id="typeClm" minWidth="20.0" prefWidth="90.0" text="Type" />
+          <TreeTableColumn fx:id="geneClm" prefWidth="62.0" text="Gene" />
+          <TreeTableColumn fx:id="nomenclatureClm" prefWidth="97.0" text="Nomenclature">
+         <columns>
+            <TreeTableColumn fx:id="hgvsNomenclatureClm" prefWidth="75.0" text="HGVS" />
+            <TreeTableColumn fx:id="iscnNomenclatureClm" prefWidth="75.0" text="ISCN" />
+         </columns>
+      </TreeTableColumn>
+          <TreeTableColumn fx:id="numTargetsClm" prefWidth="75.0" text="# Targets" />
+          <TreeTableColumn fx:id="minSizeClm" prefWidth="100.0" text="Size min [bp]" />
+          <TreeTableColumn fx:id="maxSizeClm" prefWidth="100.0" text="Size max [bp]" />
+          <TreeTableColumn fx:id="classClm" prefWidth="100.0" text="Classification" />
+          <TreeTableColumn fx:id="approvedClm" prefWidth="150.0" text="Approved">
+         <columns>
+            <TreeTableColumn fx:id="statusApprovedClm" prefWidth="100.0" text="Status" />
+            <TreeTableColumn fx:id="methodApprovedClm" prefWidth="120.0" text="Method" />
+         </columns>
+      </TreeTableColumn>
+          <TreeTableColumn fx:id="chrClm" prefWidth="55.0" text="Chr" />
+          <TreeTableColumn fx:id="startClm" text="Start" />
+          <TreeTableColumn fx:id="stopClm" text="Stop" />
+          <TreeTableColumn fx:id="numCallerClm" prefWidth="65.0" text="# Caller" />
+          <TreeTableColumn fx:id="callerClm" prefWidth="75.0" text="Caller" />
+          <TreeTableColumn fx:id="frequClm" prefWidth="100.0" text="IH Frequency" />
+      <TreeTableColumn fx:id="numSamplesClm" prefWidth="99.0" text="IH Samples" />
+          <TreeTableColumn fx:id="transcriptClm" prefWidth="141.0" text="Transcript" />
+      </columns>
+   <contextMenu>
+      <ContextMenu>
+        <items>
+          <MenuItem fx:id="mniClassify" disable="true" mnemonicParsing="false" onAction="#handleClassify" text="Klassifizieren" />
+            <MenuItem fx:id="mnuClassHist" disable="true" mnemonicParsing="false" text="Klassifikationshistorie" />
+            <MenuItem fx:id="mniNomenclature" disable="true" mnemonicParsing="false" onAction="#handleNomenclature" text="Nomenklatur bearbeiten" />
+            <MenuItem fx:id="mnuShowViscap" disable="true" mnemonicParsing="false" text="Viscap Plot anzeigen" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem fx:id="mnuCollapse" mnemonicParsing="false" onAction="#handleCollapse" text="CNVs einklappen" />
+            <MenuItem fx:id="mnuExpand" mnemonicParsing="false" onAction="#handleExpand" text="CNVs ausklappen" />
+        </items>
+      </ContextMenu>
+   </contextMenu>
+  </TreeTableView>

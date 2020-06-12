@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~  midas: ngs.client
+  ~ Autor: Lydia Leifels <lydia.leifels@medizinische-genetik.de>
+  ~
+  ~ Zentrum für Humangenetik und Laboratoriumsdiagnostik (MVZ)
+  ~ Dr. Klein, Dr. Rost und Kollegen
+  ~ Copyright (c) 2019. All rights reserved
+  ~
+  ~ Abhängigkeiten: siehe pom.xml
+  ~ Kurzbeschreibung: siehe Javadoc
+  ~ $Revision$
+  -->
+
+<?import de.jensd.fx.glyphs.icons525.Icons525View?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="492.0" prefWidth="1044.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="new_variantview.VariantViewController">
+    <stylesheets>
+        <URL value="@../styles/VariantView.css" />
+    </stylesheets>
+   <children>
+      <GridPane hgap="5.0" minHeight="75.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="-Infinity" />
+          <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="15.0" />
+            <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="NEVER" minWidth="10.0" prefWidth="15.0" />
+            <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+            <ColumnConstraints hgrow="NEVER" minWidth="-Infinity" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="-Infinity" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Patientennummer und ausgewählte Maskierung:" GridPane.columnSpan="2" />
+            <Label text="Anreicherungsversion:" GridPane.columnIndex="3" />
+            <Label text="Auswertung" GridPane.columnIndex="7" GridPane.columnSpan="2" />
+            <Separator prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+            <Separator prefWidth="200.0" GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="1" />
+            <CheckBox fx:id="chkbColor" mnemonicParsing="false" selected="true" text="Farbe darstellen" GridPane.columnIndex="5" GridPane.rowIndex="2" />
+             <ChoiceBox fx:id="drpdInvestigation" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="320.0" GridPane.rowIndex="2" />
+            <Button fx:id="btnDeleteInv" mnemonicParsing="false" onAction="#handleBtnDeleteInv" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <graphic>
+                  <Icons525View glyphName="REMOVE" size="16" />
+               </graphic>
+            </Button>
+            <Button fx:id="btnMidReport" mnemonicParsing="false" onAction="#handleBtnMidReport" text="Zwischenbericht" GridPane.columnIndex="7" GridPane.rowIndex="2" />
+            <Button fx:id="btnMainReport" mnemonicParsing="false" onAction="#handleBtnMainReport" text="Abschlusssbericht" GridPane.columnIndex="8" GridPane.rowIndex="2" />
+            <Label fx:id="lblEnrVersKit" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+             <Label text="Darstellung" GridPane.columnIndex="5" />
+             <Separator prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+            <Label fx:id="lblLoggMessage" contentDisplay="RIGHT" text="Label" textAlignment="CENTER" textFill="#f20606" GridPane.columnIndex="6" GridPane.rowSpan="3">
+               <padding>
+                  <Insets bottom="1.0" left="10.0" right="10.0" top="1.0" />
+               </padding>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </GridPane>
+      <TabPane fx:id="tbpDisplays" VBox.vgrow="ALWAYS">
+         <tabs>
+            <Tab fx:id="tbVariants" closable="false" text="Varianten">
+               <content>
+                   <fx:include fx:id="variantTab" source="VariantTab.fxml" />
+               </content>
+            </Tab>
+             <Tab fx:id="tbCoverage" closable="false" text="Coverage">
+                 <fx:include fx:id="coverageTab" source="CoverageTab.fxml" />
+             </Tab>
+            <Tab fx:id="tbCNV" closable="false" text="CNV">
+              <content>
+                  <fx:include fx:id="cnvTab" source="../fxml/variantdb/CNV/CNVTab.fxml" />
+              </content>
+            </Tab>
+         </tabs>
+      </TabPane>
+   </children>
+</VBox>
