@@ -1,0 +1,4 @@
+SELECT id_sat AS id_sat
+FROM   ngs.sam_target
+WHERE  id_cnv = ?
+AND    id_rrf = ?;
