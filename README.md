@@ -1,6 +1,7 @@
 # Master thesis - Kathrin Pindl 
 
 Source code of Master thesis 
+
 Java classes/methods/code snipets implemented by another software developer are labelled accordingly 
 
 ## ImportHandler
