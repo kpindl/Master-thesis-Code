@@ -70,6 +70,7 @@ public class MIDAS_Import_Handler_GATK {
 		LogFormatter.applyFormatter(LOGGER);
 	}
 
+    // Implemented by another developer
 	private void setShownLogLevel(Level level) {
 		Logger root = Logger.getLogger("");
 		root.setLevel(level);
@@ -78,6 +79,7 @@ public class MIDAS_Import_Handler_GATK {
 		}
 	}
 
+	// Implemented by another developer
 	public static void main(String[] args) {
 
 		MIDAS_Import_Handler_GATK mih = new MIDAS_Import_Handler_GATK();
@@ -86,6 +88,7 @@ public class MIDAS_Import_Handler_GATK {
 
 	}
 
+    // Implemented by another developer
 	private void readConfigFile() {
 
 		File file = new File(CONFIGFILEPATH.toString());
@@ -127,7 +130,7 @@ public class MIDAS_Import_Handler_GATK {
 
 			if (!enoughSpaceOnServer(this.minAvailableSpace, PathAvailableDiskSpace))
 				break;
-//
+
 			for (Path runDirectory : pathToStartDirectoryArray) {
 				List<Run> runs = fillRunModel(runDirectory);
 
@@ -140,10 +143,11 @@ public class MIDAS_Import_Handler_GATK {
 
 			sleepForMilliseconds(60000000);
 		}
-//
+
 		LOGGER.log(Level.SEVERE, "Less than " + this.minAvailableSpace + " GB of storage space available.");
 	}
 
+    // Implemented by another developer
 	private void updateCacheDataForNewIteration(MIDAS_DB database) {
 		mappedSequencerIDs = database.getMappedSequencerIDs();
 		enrichmentversions = database.getAllEnrichmentversions();
@@ -153,6 +157,7 @@ public class MIDAS_Import_Handler_GATK {
 		cnvType.put(1000, "Duplication");
 	}
 
+    // Implemented by another developer
 	/**
 	 * This method determines whether there is a given amount of disc space left in a given directory on Linux backend.
 	 *
@@ -188,6 +193,7 @@ public class MIDAS_Import_Handler_GATK {
 		return false;
 	}
 
+    // Implemented by another developer
 	private void sleepForMilliseconds(int sleeptime) {
 		LOGGER.log(Level.INFO, "Done and sleep for " + sleeptime + "ms.");
 		try {
@@ -198,6 +204,7 @@ public class MIDAS_Import_Handler_GATK {
 	}
 
 
+	// Implemented by another developer
 	/**
 	 * This method searches for all runs within a given directory.
 	 *
@@ -247,6 +254,7 @@ public class MIDAS_Import_Handler_GATK {
 	}
 
 
+	// Implemented by another developer
 	private void processRun(MIDAS_DB database, Run run) {
 		Optional<Integer> id_run = getIdRun(database.select_Run(run.getExperimentName()), run);
 		if (id_run.isPresent()) {
@@ -344,6 +352,7 @@ public class MIDAS_Import_Handler_GATK {
     }
 
 
+    // Implemented by another developer
     /**
 	 * This method searches in a given {@link List} for the equivalent {@link Run}.
 	 * @param databaseRuns
@@ -373,7 +382,7 @@ public class MIDAS_Import_Handler_GATK {
 	}
 
 
-	//region update run model
+	//region update run model - Implemented by another developer
 	/**
 	 * This method compares {@link Run} data stored on hard dist with {@link Run} data in database and updates them,
 	 * if necessary.
@@ -400,7 +409,7 @@ public class MIDAS_Import_Handler_GATK {
 	//endregion
 
 
-	//region fill sample model
+	//region fill sample model - Implemented by another developer
 	/**
 	 * This method fills all data related to a sample without taking into account model run
 	 * @param database
@@ -483,7 +492,7 @@ public class MIDAS_Import_Handler_GATK {
 	//endregion
 
 
-	//region analysis
+	//region analysis - Implemented by another developer
 	/**
 	 * @param run
 	 */
@@ -492,7 +501,7 @@ public class MIDAS_Import_Handler_GATK {
 	//endregion
 
 
-	//region import
+	//region import - Implemented by another developer
 	/**
 	 * Here all data files will be imported into the model (contamination and flagstat files) or database (coverage and
 	 * vcf files), respectively.
@@ -806,7 +815,7 @@ public class MIDAS_Import_Handler_GATK {
 	//endregion
 
 
-	//region update sample model
+	//region update sample model - Implemented by another developer
 	private void updateSampleModel(MIDAS_DB database, List<Sample> samples) {
 
 		for (Sample sample : samples) {
@@ -1063,13 +1072,13 @@ public class MIDAS_Import_Handler_GATK {
 
     	List<Target> targets = sample.getTargets();
 
-    	// First step: Sort targets by chr, start, stop, type
+    	// Sort targets by chr, start, stop, type
         Collections.sort(targets);
 
-        // Second step: define evidence group for targets
+        // Define evidence group for targets
         defineEvidenceGroup(targets);
 
-        // Third step: group targets to cnvs
+        // Group targets to cnvs
 		int c = -20; // Score to start new CNV
 
 		// (1) Init matrix M
@@ -1083,6 +1092,7 @@ public class MIDAS_Import_Handler_GATK {
 
 		return cnvs;
     }
+
 
 	private List<CNV> traceback(Sample sample, HashMap<Integer, Integer> orderReferenceTargets, MIDAS_DB database, List<Target> targets, int c, int[][] M) {
 		int n = targets.size();
@@ -1114,18 +1124,6 @@ public class MIDAS_Import_Handler_GATK {
 				i = i - 1;
 				continue;
 			}
-
-			System.out.println("No traceback step possible: ");
-			System.out.println("M[i][j]: " + M[i][j]);
-			System.out.println("M[i-1][j-1]: " + M[i-1][j-1]);
-			System.out.println("M[i][j-1]: " + M[i][j-1]);
-			System.out.println("Target j: " + targets.get(j).getId_rrf());
-			System.out.println("\tType: " + targets.get(j).getType());
-			System.out.println("\tEvidence: " + targets.get(j).getEvidencegroup());
-			System.out.println("Target j-1: " + targets.get(j-1).getId_rrf());
-			System.out.println("\tType: " + targets.get(j-1).getType());
-			System.out.println("\tEvidence: " + targets.get(j-1).getEvidencegroup());
-
 		}
 
 		cnvs.add(fillCNVModel(sample, currentCNV, database));
@@ -1306,7 +1304,7 @@ public class MIDAS_Import_Handler_GATK {
 	// endregion
 
 
-
+//  Implemented by another developer
 	/**
 	 * This method sets the {@link Run} in the lock {@link RunState} equivalent to its not locked {@link RunState} counterpart.
 	 * E.g. RunState.SEQUENCING_IN_PROGRESS -> RunState.LOCKED_SEQUENCING_IN_PROGRESS
@@ -1374,7 +1372,7 @@ public class MIDAS_Import_Handler_GATK {
 		}
 	}
 
-
+//  Implemented by another developer
     /** Return directory stream for given path
      *
      * @param path

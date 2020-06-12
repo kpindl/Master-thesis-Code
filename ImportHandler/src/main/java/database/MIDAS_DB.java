@@ -120,7 +120,7 @@ public class MIDAS_DB {
 
 
 
-    //region Constructor and initialisers
+    //region Constructor and initialisers -  Implemented by another developer
     public MIDAS_DB() {
 
         try {
@@ -353,7 +353,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region helpers
+    //region helpers - Implemented by another developer
     /**
      * This method inserts a {@link Types}.VARCHAR, {@link Types}.NUMERIC or {@link Types}.DATE value into a given
      * {@link PreparedStatement} or null if the value is null, respectively.
@@ -383,7 +383,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table covered
+    //region table covered - Implemented by another developer
     /**
      * This method inserts all covered regions of an sample of a chromosome. Checks if regions already exists in
      * database first.
@@ -464,7 +464,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region tables department and run_dep
+    //region tables department and run_dep - Implemented by another developer
     /**
      * This method inserts all id_dep of a given {@link Run} if they do not exists yet.
      *
@@ -569,7 +569,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table enrichmentversion
+    //region table enrichmentversion - Implemented by another developer
     /**
      * Retuns id_enrvers of a given enrichmentversion (String). Returns default value id_enrvers = 1 in case that a
      * given enrichmentversion is not known. Throws {@link NullPointerException} if
@@ -660,7 +660,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table instrument
+    //region table instrument - Implemented by another developer
     /**
      * @return {@link HashMap} filled to all inhouse sequencers names (key) the corresponding illumina device id (value
      * as {@link ArrayList}).
@@ -697,7 +697,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table modulcontent.user
+    //region table modulcontent.user - Implemented by another developer
     /**
      * This method returns the id_usr of user userimporthandler (column username).
      *
@@ -716,7 +716,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table patient
+    //region table patient - Implemented by another developer
     /**
      * Inserts a new entry in table patient with a given sex.
      *
@@ -741,7 +741,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    // region table region
+    // region table region - Implemented by another developer
     /**
      * Returns id_rrf for given identifier, g_start and g_end of target
      *
@@ -850,7 +850,7 @@ public class MIDAS_DB {
     // endregion
 
 
-    //region table run
+    //region table run - Implemented by another developer
     /**
      * This method returns all runs found in database with the given experiment name.
      *
@@ -1084,7 +1084,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table runstatus
+    //region table runstatus - Implemented by another developer
     public HashMap<RunState, Integer> getRunStates() {
         return runstatus;
     }
@@ -1114,7 +1114,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table sample
+    //region table sample - Implemented by another developer
     /**
      *
      * @param id_sas
@@ -1442,7 +1442,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table samplestatus
+    //region table samplestatus - Implemented by another developer
     /**
      * Selects the id_sas by a given sample state {@link String} of table samplestatus.
      *
@@ -1482,7 +1482,7 @@ public class MIDAS_DB {
     //endregion
 
 
-    //region table samplelock
+    //region table samplelock - Implemented by another developer
     /**
      * Checks whether the lock entry already exists based on sample, user and comment.
      *
@@ -1702,7 +1702,7 @@ public class MIDAS_DB {
     // endregion
 
 
-    //region table runlock
+    //region table runlock - Implemented by another developer
     /**
      * Checks whether the lock entry already exists based on run, user and comment.
      *
@@ -1785,7 +1785,7 @@ public class MIDAS_DB {
     }
     // endregion
 
-
+    // Implemented by another developer
     /**
      * This method compares the runstate of currently parsed run. In terms of
      * equality, there is no way to differentiate runstate 7, 16 and 17.
@@ -1849,6 +1849,7 @@ public class MIDAS_DB {
         return runstatus.get(run.getRunState()) == id_rus;
     }
 
+    // Implemented by another developer
     /**
      * This method selects size in bytes of a given table.
      *
@@ -1872,6 +1873,7 @@ public class MIDAS_DB {
         return 0L;
     }
 
+    //Implemented by another developer
     private String getSqlConnectionString() throws IOException {
 
         final Path CONFIGFILEPATH = Paths.get("conf/midas-Import-Handler-GATK.cfg");
@@ -1881,6 +1883,7 @@ public class MIDAS_DB {
         prop.load(inputStream);
         return prop.getProperty("sqlConnectionString");
     }
+
 
     public String getIdentifier(String chromosome) {
         return map_identifier_symbol_identifiers.get(chromosome);
