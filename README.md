@@ -22,9 +22,6 @@ Method for grouping targets by means of a dynamic programming approach; Approach
 * **CNV**: POJO Java class of CNV data
 * **Target**: POJO Java class of target data
 
-### SQL resources
-
-
 
 ## TargetImport
 
